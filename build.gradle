@@ -1,0 +1,31 @@
+plugins {
+    id 'java'
+}
+
+group 'ua.kogutenko.brainfuck'
+version '1.0-SNAPSHOT'
+sourceCompatibility = 15
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_15
+    targetCompatibility = JavaVersion.VERSION_15
+}
+jar {
+    manifest {
+        attributes 'Main-Class': 'ua.kogutenko.brainfuck.BrainFuckStart'
+    }
+
+//    from configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+}
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.jmock:jmock-junit5:2.12.0'
+    testImplementation 'junit:junit:4.13.1'
+}
+
+test {
+    useJUnitPlatform()
+}
