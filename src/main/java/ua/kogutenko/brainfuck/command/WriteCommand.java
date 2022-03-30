@@ -6,7 +6,6 @@ public class WriteCommand implements Command {
 
     @Override
     public void execute(Memory memory) {
-        System.out.print((char)memory.getArrayCell());
+        System.out.print((char)memory.getArrayBox());
     }
-
 }

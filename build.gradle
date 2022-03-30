@@ -14,18 +14,21 @@ jar {
     manifest {
         attributes 'Main-Class': 'ua.kogutenko.brainfuck.BrainFuckStart'
     }
-
-//    from configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
 }
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    testImplementation 'org.jmock:jmock-junit5:2.12.0'
-    testImplementation 'junit:junit:4.13.1'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
+    testImplementation 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
+    testImplementation 'junit:junit:4.13.2'
 }
 
 test {
     useJUnitPlatform()
+    testLogging.showStandardStreams = true
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
 }

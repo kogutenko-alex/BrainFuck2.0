@@ -9,7 +9,7 @@ public class AddCommand implements Command {
 
     @Override
     public void execute(Memory memory) {
-        memory.changeCurrentCellTo(memory.getArrayCell() + 1);
+        memory.plus();
     }
 
 }
