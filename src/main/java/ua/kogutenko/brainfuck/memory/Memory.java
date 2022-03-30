@@ -14,12 +14,20 @@ public class Memory {
         array[current_index]--;
     }
 
-    public void next() {
-        current_index++;
+    public boolean next() {
+        if (current_index < SIZE_ARRAY - 1) {
+            current_index++;
+            return true;
+        }
+        return false;
     }
 
-    public void previous() {
-        current_index--;
+    public boolean previous() {
+        if (current_index > 0) {
+            current_index--;
+            return true;
+        }
+        return false;
     }
 
     public int getSizeArray() {
@@ -30,7 +38,7 @@ public class Memory {
         return current_index;
     }
 
-    public int getArrayBox() {
+    public int getCurrentBox() {
         return array[current_index];
     }
 }

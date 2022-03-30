@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class InnerLoopCommand implements Command {
 
-    protected ArrayList<Command> commands = new ArrayList<>();
+    private final ArrayList<Command> commands = new ArrayList<>();
 
     public <T extends Command> boolean addCommand(T command) {
         return commands.add(command);
@@ -17,5 +17,9 @@ public class InnerLoopCommand implements Command {
         for (Command command : commands) {
             command.execute(memory);
         }
+    }
+
+    public ArrayList<Command> getCommands() {
+        return commands;
     }
 }

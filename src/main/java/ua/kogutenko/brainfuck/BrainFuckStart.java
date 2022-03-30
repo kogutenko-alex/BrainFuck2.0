@@ -6,10 +6,15 @@ import ua.kogutenko.brainfuck.memory.Memory;
 
 public class BrainFuckStart {
     public static void main(String[] args) {
-        //String str = args[0];
-        String str = "++++++++[>++++[>++>+++>+++>+<<<<-]>+>+>->>+[<]<-]>>.>---.+++++++..+++.>>.<-.<.+++.------.--------.>>+.>++.";
-        Memory memory = new Memory();
-        CommandExecutor commandExecutor = new Analyzer().analyzer(str);
-        commandExecutor.execute(memory);
+        try {
+            //String str = args[0];
+            String str = "++++++++[>++++[>++>+++>+++>+<<<<-]>+>+>->>+[<]<-]>>.>---.+++++++..+++.>>.<-.<.+++.------.--------.>>+.>++.";
+            Memory memory = new Memory();
+            CommandExecutor commandExecutor = null;
+            commandExecutor = new Analyzer().analyzer(str);
+            commandExecutor.execute(memory);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

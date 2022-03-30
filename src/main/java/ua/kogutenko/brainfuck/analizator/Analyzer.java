@@ -26,22 +26,22 @@ public class Analyzer {
     }
 
     private void putCommandToExecutor(Command currentCommand) throws InstantiationException, IllegalAccessException, InvocationTargetException, NoSuchMethodException {
-        // добавляем цикл
+        // add a loop
         if (currentCommand instanceof InnerLoopCommand) {
             stackILC.push((InnerLoopCommand) currentCommand);
             return;
         }
 
-        // убираем цикл
+        // remove cycle
         if (currentCommand instanceof LoopCommand) {
             putCommandToBacked(currentCommand);
             return;
         }
 
 
-        // добавляем команды в основной список команд если она не в цикле
+        // add commands to the main list of commands if it is not in a loop
         if (stackILC.isEmpty()) executor.register(currentCommand);
-            // добавляем команду во внутринее команды цикла
+        // add a command inside the loop command
         else stackILC.peek().addCommand(currentCommand);
     }
 
