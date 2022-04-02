@@ -2,21 +2,19 @@ package ua.kogutenko.brainfuck.analizator;
 
 import ua.kogutenko.brainfuck.command.*;
 
-import java.lang.reflect.InvocationTargetException;
-
 public enum CharEnumeration {
-    PLUS('+', AddCommand.class),
-    MINUS('-', SubtractCommand.class),
-    NEXT('>', NextCommand.class),
-    PREVIOUS('<', PreviousCommand.class),
-    WRITE('.', WriteCommand.class),
-    CLOSE_BRACKET(']', LoopCommand.class),
-    OPEN_BRACKET('[', InnerLoopCommand.class);
+    PLUS('+', new AddCommand()),
+    MINUS('-', new SubtractCommand()),
+    NEXT('>', new NextCommand()),
+    PREVIOUS('<', new PreviousCommand()),
+    WRITE('.', new WriteCommand()),
+    CLOSE_BRACKET(']', new LoopCommand()),
+    OPEN_BRACKET('[', new InnerLoopCommand());
 
     private final char character;
-    private final Class<? extends Command> command;
+    private final Command command;
 
-    CharEnumeration(char character, Class<? extends Command> command) {
+    CharEnumeration(char character, Command command) {
         this.character = character;
         this.command = command;
     }
@@ -25,12 +23,8 @@ public enum CharEnumeration {
         return character;
     }
 
-    public Class<? extends Command> getCommandClass() {
+    public Command getCommandObject() {
         return command;
-    }
-
-    public Command getCommandObject() throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
-        return command.getConstructor().newInstance();
     }
 
     public static CharEnumeration getCommandByChar(char ch) throws Exception {

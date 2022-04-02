@@ -1,9 +1,6 @@
 package ua.kogutenko.brainfuck.analizator;
 
 import org.junit.jupiter.api.Test;
-import ua.kogutenko.brainfuck.command.*;
-
-import java.lang.reflect.InvocationTargetException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -52,42 +49,6 @@ class CharEnumerationTest {
         assertEquals('.', CharEnumeration.WRITE.getCharacter());
     }
 
-    /////////////////////////////////////////////////
-    //+
-    @Test
-    public void getAddCommand() {
-        assertEquals(AddCommand.class, CharEnumeration.PLUS.getCommandClass());
-    }
-
-    @Test
-    public void getMinusCommand() {
-        assertEquals(SubtractCommand.class, CharEnumeration.MINUS.getCommandClass());
-    }
-
-    @Test
-    public void getNextCommand() {
-        assertEquals(NextCommand.class, CharEnumeration.NEXT.getCommandClass());
-    }
-
-    @Test
-    public void getPreviousCommand() {
-        assertEquals(PreviousCommand.class, CharEnumeration.PREVIOUS.getCommandClass());
-    }
-
-    @Test
-    public void getCloseBracketCommand() {
-        assertEquals(LoopCommand.class, CharEnumeration.CLOSE_BRACKET.getCommandClass());
-    }
-
-    @Test
-    public void getOpenBracketCommand() {
-        assertEquals(InnerLoopCommand.class, CharEnumeration.OPEN_BRACKET.getCommandClass());
-    }
-
-    @Test
-    public void getWriteCommand() {
-        assertEquals(WriteCommand.class, CharEnumeration.WRITE.getCommandClass());
-    }
 
     @Test
     public void getCommandFromChar() throws Exception {
